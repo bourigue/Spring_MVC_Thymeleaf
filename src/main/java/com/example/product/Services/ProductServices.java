@@ -14,23 +14,17 @@ public class ProductServices{
     ProductRepository productRepository;
 
 
-
-    public List<Product> getProducts(){
-        return productRepository.findAll();
-    }
+    public List<Product> getProducts(){ return productRepository.findAll(); }
     //select one post
     public  Product getProduct(Long id){ return productRepository.findById(id).get(); }
     // add the post
-    public void saveProduct(Product post){
-        productRepository.save(post);
-    }
+    public void saveProduct(Product post){ productRepository.save(post); }
     //delete post
     public void deleteProduct(Long id){
         productRepository.deleteById(id);
     }
     //update the post
-    public void updateProduct(Product post,Long id){ post.setId(id);productRepository.save(post);
-    }
+    public void updateProduct(Product post,Long id){ post.setId(id);productRepository.save(post); }
 
 
 }

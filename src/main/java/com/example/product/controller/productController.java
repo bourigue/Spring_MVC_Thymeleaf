@@ -1,16 +1,23 @@
 package com.example.product.controller;
 
+import com.example.product.Entites.Product;
+import com.example.product.Repositories.ProductRepository;
 import com.example.product.Services.ProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @Controller
 public class productController {
 
 
     @Autowired
     ProductServices productService;
+    @Autowired
+    ProductRepository productrepository;
 
     // select of all product
     /*
@@ -22,11 +29,11 @@ public class productController {
 
 
 
-    @GetMapping("/view")
-    public String helloword(Model model){
-
-        model.addAttribute("message", "Hello World!");
-        return "view";
+    @GetMapping("/listproduct")
+    public String listproduct(Model model){
+        List<Product> products=productrepository.findAll();
+        model.addAttribute("products", products);
+        return "listproduct";
     }
  /*   // the postProduct
     @GetMapping("/listposts/{id}")
