@@ -26,9 +26,6 @@ public class productController {
 
         return productService.getProducts();
     }*/
-
-
-
     @GetMapping("/listproduct")
     public String listproduct(Model model){
         List<Product> products=productrepository.findAll();
@@ -48,9 +45,10 @@ public class productController {
     }
 
     //delete the post
-    @DeleteMapping("/deleteproduits")
-    public void delete(Long id){
+    @DeleteMapping(path = "/deleteproduct")
+    public String delete(Long id){
         productrepository.deleteById(id);
+        return "redirect:/listproduct";
     }
   /*  //update the post
     @PutMapping("/listposts/{id}")
@@ -58,4 +56,8 @@ public class productController {
         productService.updatePost(product,id);
     }
     */
+
+
+
+
 }
