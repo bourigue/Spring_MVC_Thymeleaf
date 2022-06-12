@@ -31,14 +31,19 @@
   <table class="table table-striped" border="1">
     <tr>
       <th scope="col">title</th>
+      <th scope="col">description</th>
       <th scope="col">price</th>
+      <th scope="col">image</th>
+      <th scope="col">action</th>
 
     </tr>
 
     <tr scope="row" th:each ="product : ${products}">
       <td th:utext="${product.title}">...</td>
+      <td th:utext="${product.description}">...</td>
+      <td th:utext="${product.image}">...</td>
       <td th:utext="${product.price}">...</td>
-
+      <td><a th:href="@{deleteproduits(id=${product.id}})}" class="btn btn-danger">delete</a></td>
   </table>
 </div>
 </body>

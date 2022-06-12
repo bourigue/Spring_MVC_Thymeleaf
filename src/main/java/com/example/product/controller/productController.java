@@ -35,23 +35,24 @@ public class productController {
         model.addAttribute("products", products);
         return "listproduct";
     }
- /*   // the postProduct
+  // the postProduct
     @GetMapping("/listposts/{id}")
     public Product getPost(@PathVariable Long id){
-        return productService.getPost(id);
+        return productService.getProduct(id);
     }
     // add the post
     @PostMapping(value = "/listposts")
-    public void save(@RequestBody Product product){
-        productService.savePost(product);
+    public String save(@RequestBody Product product){
+        productService.saveProduct(product);
+        return "addProduct";
     }
 
     //delete the post
-    @DeleteMapping("/listposts/{id}")
-    public void delete(@PathVariable Long id){
-        productService.deletePost(id);
+    @DeleteMapping("/deleteproduits")
+    public void delete(Long id){
+        productrepository.deleteById(id);
     }
-    //update the post
+  /*  //update the post
     @PutMapping("/listposts/{id}")
     public void update(@PathVariable Long id,@RequestBody Product product){
         productService.updatePost(product,id);
